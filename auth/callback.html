@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TAGMATE | Instagram 계정 연결</title>
+</head>
+<body>
+  <h2>TAGMATE 계정 연결</h2>
+  <p id="status">인증 결과를 확인하고 있습니다.</p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const error = params.get("error");
+
+    document.getElementById("status").textContent = error
+      ? "Instagram 계정 연결이 취소되었거나 실패했습니다."
+      : params.has("code")
+        ? "로그인 승인이 확인되었습니다. TAGMATE 앱으로 돌아가세요."
+        : "인증 정보가 없습니다. TAGMATE 앱에서 다시 연결해 주세요.";
+
+    // 보안을 위해 인증 코드는 화면에 표시하지 않습니다.
+    // 실제 토큰 교환 및 계정 저장은 별도 서버에서 구현해야 합니다.
+  </script>
+</body>
+</html>
